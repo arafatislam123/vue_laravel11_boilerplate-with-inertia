@@ -1,6 +1,8 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import 'bootstrap/dist/css/bootstrap.css'
+import NProgress from 'nprogress'
+import {router} from '@inertiajs/vue3'
 
 createInertiaApp({
   resolve: name => {
@@ -13,4 +15,11 @@ createInertiaApp({
       .mount(el)
   },
 })
+router.on('start', () => {
+    NProgress.start()
+})
+router.on('finish', () => {
+    NProgress.done()
+})
+
 
